@@ -56,7 +56,7 @@ const handleSubmit = (event) => {
         country: country.value
     };
 
-    fetch(`${serverUrl}/order`, {
+    fetch(`http://localhost:9000/order`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -64,15 +64,15 @@ const handleSubmit = (event) => {
             "Content-Type": "application/json"
         }
     })
-    .then(res => res.json())
-    .then(data => {
-        const { status, error } = data;
-        if (status === 'success') {
-            window.location.href = '/order-confirmed';
-        } else if (data.error) {
-            submitButton.disabled = false;
-            errorMsg.style.display = 'flex';
-            errorMsg.innerText = error;
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            const { status, error } = data;
+            if (status === 'success') {
+                window.location.href = '/public/order-confirmed.html';
+            } else if (data.error) {
+                submitButton.disabled = false;
+                errorMsg.style.display = 'flex';
+                errorMsg.innerText = error;
+            }
+        });
 }

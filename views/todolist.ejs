@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<header>test</header>
+<form action="/data" method="post">
+    <label for="newtask">New task:</label><br>
+    <input type="text" id="newtask" name="newtask"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<h2> New Task: <%=newTask%> </h2>
+
+<div>
+
+    <ul class="timeline">
+        <% for (var i = 0; i < data.length; i++) { %>
+        <li>
+            <div>
+                <span>
+                    <%= data[i] %>
+                </span>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+
+</html>
